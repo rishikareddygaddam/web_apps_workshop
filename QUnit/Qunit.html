@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.22.0.css">
+    <script src="https://code.jquery.com/qunit/qunit-1.22.0.js"></script>
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script>
+        function checkPassword(inputPassword) {
+            var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+            if (re.test(inputPassword)) {
+
+                return true;
+            }
+            else {
+                window.alert("Make Sure Your Password contains a digit , a capital letter, a small letter and it should be minimum 8 characters");
+                return false;
+            }
+        }
+        //Test With Valid input ; Result should be true
+        QUnit.test("checkPassword", function (assert) {
+            var result = checkPassword("Testpassword@123");
+            assert.equal(result, true, "Invalid password policy matched ");
+        });
+        //Test With Invalid input ; Result should be false
+        QUnit.test("checkPassword", function (assert) {
+            var result = checkPassword("12345");
+            assert.equal(result, false, "Invalid password policy matched ");
+        });
+         //Test With Invalid input ; Result should be false this test case fails
+         QUnit.test("checkPassword", function (assert) {
+            var result = checkPassword("12345");
+            assert.equal(result, true, "Invalid password policy matched ");
+        });
+    </script>
+</body>
+
+</html>

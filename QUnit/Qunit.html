@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.22.0.css">
     <script src="https://code.jquery.com/qunit/qunit-1.22.0.js"></script>
 </head>
+
 <body>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
@@ -22,20 +23,31 @@
                 return false;
             }
         }
+        function Fahrenheit_To_Celcius(valNum) {
+            valNum = parseFloat(valNum);
+            return (valNum - 32) / 1.8;
+        }
+
+        QUnit.module("Password Validation ")
         //Test With Valid input ; Result should be true
         QUnit.test("checkPassword", function (assert) {
             var result = checkPassword("Testpassword@123");
-            assert.equal(result, true, "Invalid password policy matched ");
+            assert.equal(result, true, "Password matches with Password policy ");
         });
         //Test With Invalid input ; Result should be false
         QUnit.test("checkPassword", function (assert) {
             var result = checkPassword("12345");
-            assert.equal(result, false, "Invalid password policy matched ");
+            assert.equal(result, false, "Invalid Password - Function should return false");
         });
-         //Test With Invalid input ; Result should be false this test case fails
-         QUnit.test("checkPassword", function (assert) {
+        //Test With Invalid input ; Result should be false this test case fails
+        QUnit.test("checkPassword", function (assert) {
             var result = checkPassword("12345");
-            assert.equal(result, true, "Invalid password policy matched ");
+            assert.equal(result, true, "Invalid Password - Function should return false");
+        });
+        QUnit.module("Temperature Converter Fahrenheit To Celcius")
+        QUnit.test("checkPassword", function (assert) {
+            var result = checkPassword("12345");
+            assert.(result, false, "Invalid Password - Function should return false");
         });
     </script>
 </body>

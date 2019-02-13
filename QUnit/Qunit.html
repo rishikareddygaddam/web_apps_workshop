@@ -28,6 +28,11 @@
             return (valNum - 32) / 1.8;
         }
 
+        function Fahrenheit_To_Celcius_Invalid(valNum) {
+            valNum = parseFloat(valNum);
+            return (valNum - 30) / 1.2;
+        }
+
         QUnit.module("Password Validation ")
         //Test With Valid input ; Result should be true
         QUnit.test("checkPassword", function (assert) {
@@ -37,18 +42,24 @@
         //Test With Invalid input ; Result should be false
         QUnit.test("checkPassword", function (assert) {
             var result = checkPassword("12345");
-            assert.equal(result, false, "Invalid Password - Function should return false");
+            assert.equal(result, false, "Invalid Password - Result and expected values matched ");
         });
         //Test With Invalid input ; Result should be false this test case fails
         QUnit.test("checkPassword", function (assert) {
             var result = checkPassword("12345");
-            assert.equal(result, true, "Invalid Password - Function should return false");
+            assert.equal(result, true, "Invalid Password - Expected value is True returned value is false");
         });
         QUnit.module("Temperature Converter Fahrenheit To Celcius")
-        QUnit.test("checkPassword", function (assert) {
-            var result = checkPassword("12345");
-            assert.equal(result, false, "Invalid Password - Function should return false");
+        QUnit.test("Convert Temperature", function (assert) {
+            var result = Fahrenheit_To_Celcius(32);
+            assert.equal(result, 0, "Conversion Successful");
         });
+        QUnit.test("Convert Temperature", function (assert) {
+            var result = Fahrenheit_To_Celcius_Invalid(32);
+            assert.equal(result, 0, "Conversion Failed!!!");
+        });
+
+
     </script>
 </body>
 
